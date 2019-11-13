@@ -31,6 +31,9 @@
     <ClCompile Include="QtBoostLibExample_VS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AsioClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtBoostLibExample_VS.h">
@@ -46,5 +49,10 @@
     <QtRcc Include="QtBoostLibExample_VS.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AsioClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
