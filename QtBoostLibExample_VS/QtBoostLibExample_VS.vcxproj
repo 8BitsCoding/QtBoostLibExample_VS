@@ -104,7 +104,7 @@
     <QtRcc Include="QtBoostLibExample_VS.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AsioClient.h" />
+    <QtMoc Include="AsioClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

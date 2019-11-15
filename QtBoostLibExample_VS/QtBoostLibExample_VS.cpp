@@ -10,6 +10,8 @@ QtBoostLibExample_VS::QtBoostLibExample_VS(QWidget *parent)
 	ui.paramTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 	ui.urlEdit->setText("http://127.0.0.1:5000/");
+
+	connect(client, SIGNAL(read_finish(QString)), this, SLOT(on_success));
 }
 
 QtBoostLibExample_VS::~QtBoostLibExample_VS()
@@ -33,4 +35,9 @@ void QtBoostLibExample_VS::on_getBtn_clicked()
 
 		client->Get(hostName, urlPath);
 	}
+}
+
+void QtBoostLibExample_VS::on_success(const QString& msg)
+{
+	ui.responseEdit->setText(msg);
 }

@@ -8,8 +8,9 @@
 #include <memory>
 #include <thread>
 
-class AsioClient
+class AsioClient : public QObject
 {
+	Q_OBJECT
 public:
 	AsioClient();
 	~AsioClient();
@@ -39,5 +40,9 @@ private:
 	boost::asio::streambuf responsebuf;
 
 	std::ostringstream oss;
+
+signals:
+	void read_finish(const QString& msg);
+	void read_failed(const QString& msg);
 };
 

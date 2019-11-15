@@ -39,6 +39,9 @@
     <QtMoc Include="QtBoostLibExample_VS.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="AsioClient.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QtBoostLibExample_VS.ui">
@@ -49,10 +52,5 @@
     <QtRcc Include="QtBoostLibExample_VS.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AsioClient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

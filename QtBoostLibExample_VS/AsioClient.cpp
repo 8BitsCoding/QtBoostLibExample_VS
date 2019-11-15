@@ -162,8 +162,11 @@ void AsioClient::handle_read_content(const boost::system::error_code& err)
 	else if (err == boost::asio::error::eof) {
 		// file end
 		qDebug() << oss.str().c_str() << endl;
+
+		emit read_finish(QString::fromStdString(oss.str()));
 	}
 	else {
 		// error
+		emit read_failed(QString::fromStdString(err.message()));
 	}
 }
