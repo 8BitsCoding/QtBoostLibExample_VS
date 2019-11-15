@@ -71,5 +71,38 @@ void AsioClient::handle_connect(const boost::system::error_code& err, boost::asi
 
 void AsioClient::handle_write(const boost::system::error_code& err)
 {
+	// recv
+	if (!err) {
+		boost::asio::async_read_until(socket, responsebuf, "\r\n",
+			boost::bind(&AsioClient::handle_read_line, this, boost::asio::placeholders::error));
+	}
+	else {
+		qDebug() << "handle_Write error : " << err.message().c_str() << endl;
+	}
+}
 
+void AsioClient::handle_read_line(const boost::system::error_code& err)
+{
+	if (!err) {
+		std::istream is(&responsebuf);
+		std::string http_version;
+		unsigned int status_code;
+		std::string message;
+
+		is >> http_version;
+		is >> status_code;
+		std::getline(is, message);
+
+		// Error Check
+		// 1. http_version HTTP/
+		// 2. status_code != 200
+
+		if (status_code != 200) {
+			return;
+		}
+
+	}
+	else {
+
+	}
 }

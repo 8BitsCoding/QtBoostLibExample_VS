@@ -20,6 +20,7 @@ public:
 	void handle_connect(const boost::system::error_code& err,
 		boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
 	void handle_write(const boost::system::error_code& err);
+	void handle_read_line(const boost::system::error_code& err);
 
 
 private:
@@ -33,5 +34,6 @@ private:
 	boost::asio::ip::tcp::socket socket;
 
 	boost::asio::streambuf requestbuf;
+	boost::asio::streambuf responsebuf;
 };
 
