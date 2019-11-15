@@ -19,5 +19,18 @@ QtBoostLibExample_VS::~QtBoostLibExample_VS()
 
 void QtBoostLibExample_VS::on_getBtn_clicked()
 {
-	client->Get("www.boost.org", "/");
+	QString url = ui.urlEdit->text();
+	//    client->Get("www.boost.org","/");
+
+		// https://gist.github.com/voodooGQ/4057330
+		// 위 사이트에서 아래의 정규표현식을 받아와 사용한다.
+		// 참고로 정규표현식 확인사이트는 https://regex101.com
+	QRegularExpression re("^(?:([A-Za-z]+):)?(\\/{0,3})([0-9.\\-A-Za-z]+)(?::(\\d+))?(?:\\/([^?#]*))?(?:\\?([^#]*))?(?:#(.*))?$");
+	QRegularExpressionMatch match = re.match(url);
+	if (match.hasMatch()) {
+		auto hostName = match.captured(3);      // match 3이 hostName
+		auto urlPath = "/" + match.captured(5);       // match 5가 url
+
+		client->Get(hostName, urlPath);
+	}
 }
